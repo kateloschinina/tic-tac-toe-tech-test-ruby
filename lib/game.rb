@@ -1,4 +1,4 @@
-class Board
+class Game
   attr_reader :player_X, :player_O, :turn, :last_claim
 
   def initialize(player_one, player_two)

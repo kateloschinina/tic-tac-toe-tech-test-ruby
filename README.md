@@ -29,7 +29,7 @@ Build the business logic for a game of tic tac toe. It should be easy to impleme
  - Players should be able to:
      - claim a field (that is not already taken)
 
-#### Class Board
+#### Class Game
  - Accepts players turn, stores this turn in TurnLog
  - Calculates whether the game was won
  - Calculates whether that was a draw
