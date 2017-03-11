@@ -1,8 +1,8 @@
 class Board
-  attr_reader :player_one, :player_two
+  attr_reader :player_X, :player_O
 
   def initialize(player_one, player_two)
-    @player_one = player_X
-    @player_two = player_O
+    @player_X = player_one
+    @player_O = player_two
   end
 end
