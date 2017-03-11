@@ -34,11 +34,11 @@ Build the business logic for a game of tic tac toe. It should be easy to impleme
  - Calculates whether the game was won
  - Calculates whether that was a draw
 
-#### Class Turn
- - Stores field and player
+#### Class Claim
+ - Stores field
 
-#### Class TurnLog
- - Stores turns
+#### Class ClaimLog
+ - Stores claims and players
  - Checks whether the field was taken
  - Makes sure that players change turns
 

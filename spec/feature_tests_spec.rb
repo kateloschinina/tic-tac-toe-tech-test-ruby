@@ -10,5 +10,7 @@ describe 'Feature Tests' do
 
   it 'Players can take turns' do
     expect(board.turn).to eq(player_one)
+    board.new_claim(1,2)
+    expect(board.turn).to eq(player_two)
   end
 end
