@@ -11,4 +11,10 @@ describe Board do
     end
   end
 
+  context "turns" do
+    it "first turn is of the first player" do
+      expect(board.turn).to eq(player_one)
+    end
+  end
+
 end
