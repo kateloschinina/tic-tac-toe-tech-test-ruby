@@ -11,35 +11,51 @@ describe Game do
     it "creates an instance of a class" do
       expect(game).to be_a(Game)
     end
+
     it "stores players" do
       expect(game.player_X).to eq(player_one)
       expect(game.player_O).to eq(player_two)
     end
-  end
 
-  context "turns" do
     it "first turn is of the first player" do
       expect(game.turn).to eq(player_one)
-    end
-    it "turn changes after first claim" do
-      game.new_claim(column,row)
-      expect(game.turn).to eq(player_two)
     end
   end
 
   context "#new_claim" do
-    it "new claim changes turn" do
-      game.new_claim(column,row)
-      expect(game.turn).to eq(player_two)
+    context "when claimed position is already busy" do
+      before do
+        allow(game.claim_log).to receive(:add).and_return(ClaimLog::BUSY)
+        game.new_claim(column,row)
+      end
+
+      it "does not change a turn" do
+        expect(game.turn).to eq(player_one)
+      end
+
+      it "assigns status to be busy" do
+        expect(game.status).to eq(ClaimLog::BUSY)
+      end
     end
-    it "current player can make a claim" do
-      game.new_claim(column,row)
-      expect(game.last_claim).to be_a(Claim)
+    context "when claimed position is not busy and game is not won" do
+      before do
+        allow(game.claim_log).to receive(:add).and_return(ClaimLog::CONTINUE)
+        game.new_claim(column,row)
+      end
+
+      it "does change a turn" do
+        expect(game.turn).to eq(player_two)
+      end
+
+      it "assigns status to continue" do
+        expect(game.status).to eq(ClaimLog::CONTINUE)
+      end
     end
-    it "stores new claim" do
-      game.new_claim(column,row)
-      expect(game.last_claim).to be_a(Claim)
+    context "when the message from ClaimLog is not clear" do
+      it "raises an error message" do
+        allow(game.claim_log).to receive(:add).and_return("something")
+        expect{game.new_claim(column,row)}.to raise_error(Game::ERROR_MESSAGE)
+      end
     end
   end
-
 end

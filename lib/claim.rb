@@ -1,4 +1,5 @@
 class Claim
-  def initialize(column, row)
+  def initialize(turn, column, row)
+    
   end
 end

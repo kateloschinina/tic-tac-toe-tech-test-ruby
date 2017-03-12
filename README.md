@@ -28,19 +28,19 @@ Build the business logic for a game of tic tac toe. It should be easy to impleme
  - Program should have two players (O and X)
  - Players should be able to:
      - claim a field (that is not already taken)
+ - Players do have names
 
 #### Class Game
  - Accepts players turn, stores this turn in TurnLog
- - Calculates whether the game was won
- - Calculates whether that was a draw
+ - Makes sure that players change turns
 
 #### Class Claim
  - Stores field
 
 #### Class ClaimLog
- - Stores claims and players
+ - Is an array of 9 dimension, stores players to corresponding cells
  - Checks whether the field was taken
- - Makes sure that players change turns
+ - Knows whether the game was won or there was a draw
 
 #### Class Interface
 The idea is to write a simple command line interface, that will allow to test what program does.
