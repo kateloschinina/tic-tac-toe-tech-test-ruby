@@ -4,6 +4,7 @@ class ClaimLog
   WON = "won"
   BUSY = "busy"
   CONTINUE = "continue"
+  DRAW = "continue"
 
   def initialize
     @log = Array.new(9)
@@ -17,11 +18,16 @@ class ClaimLog
     false
   end
 
+  def draw?
+    @log.each { |x| return CONTINUE if x == nil}
+    DRAW
+  end
+
   private
 
   def add_claim(player, column, row)
     @log[position(column, row)] = player
-    self.won? ? WON : CONTINUE
+    self.won? ? WON : self.draw?
   end
 
   def free?(column, row)

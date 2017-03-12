@@ -14,7 +14,7 @@ describe ClaimLog do
     end
   end
 
-  context('#add') do
+  context "#add" do
     context "when position is not busy" do
       it "adds a claim to a log" do
         claim_log.add(player, 1, 1)
@@ -65,4 +65,19 @@ describe ClaimLog do
   #     end
   #   end
   # end
+
+  context "draw?" do
+    context "when it is a draw" do
+      it "returns DRAW" do
+        claim_log.log = [1,1,1,1,1,1,1,1,1]
+        expect(claim_log.draw?).to eq(ClaimLog::DRAW)
+      end
+    end
+    context "when it is not a draw" do
+      it "returns CONTINUE" do
+        claim_log.log = [1,1,1,1,nil,1,1,1,1]
+        expect(claim_log.draw?).to eq(ClaimLog::CONTINUE)
+      end
+    end
+  end
 end
