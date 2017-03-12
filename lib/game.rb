@@ -22,7 +22,7 @@ class Game
       change_turn
       @status
     when ClaimLog::WON
-      @turn.name+WON_STATUS
+      @status = @turn.name+WON_STATUS
     else
       raise ERROR_MESSAGE
     end

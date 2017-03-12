@@ -20,7 +20,7 @@ describe ClaimLog do
         claim_log.add(player, 1, 1)
         expect(claim_log.log[0]).to eq(player)
       end
-      it "returns busy status" do
+      it "returns continue status" do
         expect(claim_log.add(player, 1, 1)).to eq(ClaimLog::CONTINUE)
       end
     end
@@ -43,28 +43,50 @@ describe ClaimLog do
     end
   end
 
-  # context('#won?') do
-  #   context "returns true if player fills all the fields in a row" do
-  #     it "first row" do
-  #       claim_log.log = ["X", "X", "X"]
-  #       expect(claim_log.won?).to eq(true)
-  #       claim_log.log = ["O", "O", "O"]
-  #       expect(claim_log.won?).to eq(true)
-  #     end
-  #     it "socond row" do
-  #       claim_log.log = ["","","","X", "X", "X"]
-  #       expect(claim_log.won?).to eq(true)
-  #       claim_log.log = ["","","","O", "O", "O"]
-  #       expect(claim_log.won?).to eq(true)
-  #     end
-  #     it "third row" do
-  #       claim_log.log = ["","","","","","","X", "X", "X"]
-  #       expect(claim_log.won?).to eq(true)
-  #       claim_log.log = ["","","","","","","O", "O", "O"]
-  #       expect(claim_log.won?).to eq(true)
-  #     end
-  #   end
-  # end
+  context('#won?') do
+    context "returns true if player fills all the fields in a row" do
+      it "first row" do
+        claim_log.log = [1,1,1,4,5,6,7,8,9]
+        expect(claim_log.won?).to eq(true)
+      end
+      it "socond row" do
+        claim_log.log = [1,2,3,1,1,1,7,8,9]
+        expect(claim_log.won?).to eq(true)
+      end
+      it "third row" do
+        claim_log.log = [1,2,3,4,5,6,1,1,1]
+        expect(claim_log.won?).to eq(true)
+      end
+    end
+    context "returns true if player fills all the fields in a column" do
+      it "first column" do
+        claim_log.log = [1,2,3,1,5,6,1,8,9]
+        expect(claim_log.won?).to eq(true)
+      end
+      it "socond column" do
+        claim_log.log = [1,2,3,4,2,6,7,2,9]
+        expect(claim_log.won?).to eq(true)
+      end
+      it "third column" do
+        claim_log.log = [1,2,1,4,5,1,7,8,1]
+        expect(claim_log.won?).to eq(true)
+      end
+    end
+    context "returns true if player fills all the fields in a diagonal" do
+      it "first diagonal" do
+        claim_log.log = [1,2,3,4,1,6,7,8,1]
+        expect(claim_log.won?).to eq(true)
+      end
+      it "socond diagonal" do
+        claim_log.log = [1,2,1,4,1,6,1,8,9]
+        expect(claim_log.won?).to eq(true)
+      end
+    end
+    it "return false if lost" do
+      claim_log.log = [1,2,3,4,5,6,7,8,9]
+      expect(claim_log.won?).to eq(false)
+    end
+  end
 
   context "draw?" do
     context "when it is a draw" do
