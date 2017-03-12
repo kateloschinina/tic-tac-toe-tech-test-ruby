@@ -18,21 +18,37 @@ Build the business logic for a game of tic tac toe. It should be easy to impleme
 ## Technologies used
 * Ruby 2.4.0
 * Rspec
-[TBD]
+* Pry
 
 ## Run program / test
-[TBD]
+To run the program
+```
+$ git clone git@github.com:kateloschinina/tic-tac-toe-tech-test-ruby.git
+$ bundle install
+$ bundle
+```
+Then to play with interface
+```
+$ pry
+[1] pry(main)> require './lib/interface.rb'
+=> true
+[2] pry(main)> Interface.game_interface
+```
+And to run tests
+```
+$ rspec
+```
 
-## Initial thoughts on program structure
+## Thoughts on program structure
 #### Class Player
  - Program should have two players (O and X)
- - Players should be able to:
-     - claim a field (that is not already taken)
  - Players do have names
+ - Player class stores a name, gives a name by default, and assures player uniqueness
 
 #### Class Game
  - Accepts players turn, stores this turn in TurnLog
  - Makes sure that players change turns
+ - Make new claim
 
 #### Class ClaimLog
  - Is an array of 9 dimension, stores players to corresponding cells
@@ -45,3 +61,90 @@ The idea is to write a simple command line interface, that will allow to test wh
  - Welcomes players; prints empty board, suggests players to play
  - Takes input from command line one by one (column and row of the game). If the field is already taken requests to re-enter the turn
  - Announces the winner, or announces draw otherwise
+
+Please note, that interface is just an example of the one that could be used together with the program, therefore was not TDD designed.
+
+### Example of interface usage
+```
+> Player One, please enter your name, you will be X:
+Kat
+> Player Two, please enter your name, you will be O:
+Ivan
+> Current turn: Kat
+> Enter your claim, column first:
+1
+> and then row:
+1
+> Game is on
+> This is your latest game state
+ X - -
+ - - -
+ - - -
+> Current turn: Ivan
+> Enter your claim, column first:
+2
+> and then row:
+2
+> Game is on
+T> his is your latest game state
+ X - -
+ - O -
+ - - -
+> Current turn: Kat
+> Enter your claim, column first:
+2
+> and then row:
+2
+> You can't claim this cell, it is busy
+> Current turn: Kat
+> Enter your claim, column first:
+3
+> and then row:
+2
+> Game is on
+> This is your latest game state
+ X - -
+ - O X
+ - - -
+> Current turn: Ivan
+> Enter your claim, column first:
+3
+> and then row:
+3
+> Game is on
+> This is your latest game state
+ X - -
+ - O X
+ - - O
+> Current turn: Kat
+> Enter your claim, column first:
+2
+> and then row:
+1
+> Game is on
+> This is your latest game state
+ X X -
+ - O X
+ - - O
+> Current turn: Ivan
+> Enter your claim, column first:
+2
+> and then row:
+3
+> Game is on
+> This is your latest game state
+ X X -
+ - O X
+ - O O
+> Current turn: Kat
+> Enter your claim, column first:
+3
+> and then row:
+1
+> Kat won the game
+> This is your latest game state
+ X X X
+ - O X
+ - O O
+=> "Kat won the game"
+```
