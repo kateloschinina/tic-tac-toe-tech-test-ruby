@@ -21,7 +21,7 @@ module Interface
 
   private
   def Interface.print_symbol(i, game, player_one, player_two)
-    game.claim_log.log[i] == player_one ? "X" : game.claim_log.log[i] == player_two ? "O" : "-"
+    game.claim_log.log[i] == game.player_X ? "X" : game.claim_log.log[i] == game.player_O ? "O" : "-"
   end
 
   def Interface.print_state(game, player_one, player_two)
@@ -30,7 +30,7 @@ module Interface
   end
 
   def Interface.play_turn(game)
-    puts "Current turn: #{game.turn}"
+    puts "Current turn: #{game.turn.name}"
     puts "Enter your claim, column first:"
     claim_column = (gets.chomp.to_i - 1) % 3 + 1
     puts "and then row:"
