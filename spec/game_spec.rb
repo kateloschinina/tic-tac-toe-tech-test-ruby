@@ -34,7 +34,7 @@ describe Game do
       end
 
       it "assigns status to be busy" do
-        expect(game.status).to eq(ClaimLog::BUSY)
+        expect(game.status).to eq(Game::BUSY_STATUS)
       end
     end
     context "when claimed position is not busy and game is not won" do
@@ -48,7 +48,7 @@ describe Game do
       end
 
       it "assigns status to continue" do
-        expect(game.status).to eq(ClaimLog::CONTINUE)
+        expect(game.status).to eq(Game::DEFAULT_STATUS)
       end
     end
     context "when the message from ClaimLog is not clear" do

@@ -4,7 +4,7 @@ class ClaimLog
   WON = "won"
   BUSY = "busy"
   CONTINUE = "continue"
-  DRAW = "continue"
+  DRAW = "draw"
 
   def initialize
     @log = Array.new(9)
@@ -19,8 +19,7 @@ class ClaimLog
   end
 
   def draw?
-    @log.each { |x| return CONTINUE if x == nil}
-    DRAW
+    @log.include?(nil) ? CONTINUE : DRAW
   end
 
   private

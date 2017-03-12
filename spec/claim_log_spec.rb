@@ -91,7 +91,7 @@ describe ClaimLog do
   context "draw?" do
     context "when it is a draw" do
       it "returns DRAW" do
-        claim_log.log = [1,1,1,1,1,1,1,1,1]
+        claim_log.log = [1,2,3,4,5,6,7,8,9]
         expect(claim_log.draw?).to eq(ClaimLog::DRAW)
       end
     end
