@@ -1,6 +1,5 @@
 require 'player'
 require 'game'
-require 'claim'
 require 'claim_log'
 
 require 'pry'

@@ -34,9 +34,6 @@ Build the business logic for a game of tic tac toe. It should be easy to impleme
  - Accepts players turn, stores this turn in TurnLog
  - Makes sure that players change turns
 
-#### Class Claim
- - Stores field
-
 #### Class ClaimLog
  - Is an array of 9 dimension, stores players to corresponding cells
  - Checks whether the field was taken
@@ -47,4 +44,4 @@ The idea is to write a simple command line interface, that will allow to test wh
  - Asks first and second players to enter their names
  - Welcomes players; prints empty board, suggests players to play
  - Takes input from command line one by one (column and row of the game). If the field is already taken requests to re-enter the turn
- - Congratulates in case if the game was won, or announces draw otherwise
+ - Announces the winner, or announces draw otherwise
