@@ -2,7 +2,7 @@ describe Player do
 
   subject(:player) { described_class.new }
   subject(:player_with_name) { described_class.new (name) }
-  let(:name) { double :name }
+  let(:name) { "Name" }
 
   context "class creation" do
     it "creates an instance of a class" do

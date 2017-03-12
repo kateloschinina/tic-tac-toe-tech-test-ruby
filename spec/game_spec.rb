@@ -1,8 +1,8 @@
 describe Game do
 
   subject(:game) { described_class.new(player_one_name, player_two_name) }
-  let(:player_one_name) { double :player_one_name }
-  let(:player_two_name) { double :player_two_name }
+  let(:player_one_name) { "First name" }
+  let(:player_two_name) { "Second name" }
   let(:column) { double :column }
   let(:row) { double :row }
 
