@@ -5,6 +5,6 @@ class Player
   DEFAULT_NAME = "Anonimus"
 
   def initialize(name = DEFAULT_NAME)
-    @name = name
+    @name = name.empty? ? DEFAULT_NAME : name
   end
 end
