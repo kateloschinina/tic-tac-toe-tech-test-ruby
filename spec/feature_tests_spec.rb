@@ -1,18 +1,18 @@
 describe 'Feature Tests' do
-  player_one = Player.new("Player One")
-  player_two = Player.new("Player Two")
+  player_one = "Player One"
+  player_two = "Player Two"
 
   it 'There are two players in the game' do
     game = Game.new(player_one, player_two)
-    expect(game.player_X).to eq(player_one)
-    expect(game.player_O).to eq(player_two)
+    expect(game.player_X.name).to eq(player_one)
+    expect(game.player_O.name).to eq(player_two)
   end
 
   it 'Players can take turns. A turn ends when a player claims a field' do
     game = Game.new(player_one, player_two)
-    expect(game.turn).to eq(player_one)
+    expect(game.turn.name).to eq(player_one)
     game.new_claim(1,2)
-    expect(game.turn).to eq(player_two)
+    expect(game.turn.name).to eq(player_two)
   end
 
   it 'Players can not claim busy field' do

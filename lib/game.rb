@@ -8,9 +8,9 @@ class Game
 
   ERROR_MESSAGE = "Something went wrong"
 
-  def initialize(player_one, player_two)
-    @player_X = player_one
-    @player_O = player_two
+  def initialize(player_one_name, player_two_name)
+    @player_X = Player.new(player_one_name)
+    @player_O = Player.new(player_two_name)
     @turn = @player_X
     @claim_log = ClaimLog.new
     @status = DEFAULT_STATUS
@@ -25,7 +25,7 @@ class Game
       change_turn
       @status = DEFAULT_STATUS
     when ClaimLog::WON
-      @status = @turn.name+WON_STATUS
+      @status = @turn.name + WON_STATUS
     when ClaimLog::DRAW
       @status = DRAW_STATUS
     else

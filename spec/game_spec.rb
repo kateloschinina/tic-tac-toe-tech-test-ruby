@@ -1,8 +1,8 @@
 describe Game do
 
-  subject(:game) { described_class.new(player_one, player_two) }
-  let(:player_one) { spy(:player) }
-  let(:player_two) { spy(:player) }
+  subject(:game) { described_class.new(player_one_name, player_two_name) }
+  let(:player_one_name) { double :player_one_name }
+  let(:player_two_name) { double :player_two_name }
   let(:column) { double :column }
   let(:row) { double :row }
 
@@ -13,12 +13,12 @@ describe Game do
     end
 
     it "stores players" do
-      expect(game.player_X).to eq(player_one)
-      expect(game.player_O).to eq(player_two)
+      expect(game.player_X.name).to eq(player_one_name)
+      expect(game.player_O.name).to eq(player_two_name)
     end
 
     it "first turn is of the first player" do
-      expect(game.turn).to eq(player_one)
+      expect(game.turn).to eq(game.player_X)
     end
   end
 
@@ -30,7 +30,7 @@ describe Game do
       end
 
       it "does not change a turn" do
-        expect(game.turn).to eq(player_one)
+        expect(game.turn).to eq(game.player_X)
       end
 
       it "assigns status to be busy" do
@@ -44,7 +44,7 @@ describe Game do
       end
 
       it "does change a turn" do
-        expect(game.turn).to eq(player_two)
+        expect(game.turn).to eq(game.player_O)
       end
 
       it "assigns status to continue" do
